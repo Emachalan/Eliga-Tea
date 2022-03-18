@@ -1,23 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
+import {useState, useEffect} from 'react';
 
-function App() {
+const App = () => {
+
+  const[usersList, setUsersList] = useState(null);
+
+  useEffect(() => {
+    fetch("http://192.168.101.21:3001/users/")
+    .then(res => {
+      console.log("users list....", res)
+    })
+    .catch(err => console.log("catch error"));
+  },[]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <div style={{display: 'flex', height: 60, width: '100%', backgroundColor: 'red', alignSelf: 'center', justifyContent: 'center'}}>
+       <div>
+         <h3 style={{color: 'white'}}>Eliga</h3>
+       </div>
+     </div>
+     <div style={{marginTop: 50}}>
+       <div>
+          {/* <div>Today's Tea Count = {}</div> */}
+       </div>
+     </div>
     </div>
   );
 }
